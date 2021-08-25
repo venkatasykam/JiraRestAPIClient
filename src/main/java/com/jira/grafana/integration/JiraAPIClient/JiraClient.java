@@ -43,15 +43,19 @@ import java.net.URI;
  */
 public class JiraClient 
 {
-	
-    public static final String JIRA_URL = "https://jiraURL.com";
-    public static final  String JIRA_ADMIN_USERNAME = "username";
-    public static final  String JIRA_ADMIN_PASSWORD = "accessKey-or-personal-access-token";
-   
+	/*
+    public static String JIRA_URL = System.getenv("JIRA_URL");
+    public static  String JIRA_ADMIN_USERNAME = System.getenv("JIRA_ADMIN_USERNAME");
+    public static  String JIRA_ADMIN_PASSWORD = System.getenv("JIRA_ADMIN_PASSWORD");
+    */
     public static void main( String[] args )
     {
     	try {
     		
+    	    String JIRA_URL = args[0].toString();
+    	    String JIRA_ADMIN_USERNAME = args[1].toString();
+    	    String JIRA_ADMIN_PASSWORD = args[2].toString();
+
     		int totalStories = 0;
     		
     		String[] names = null;
@@ -61,24 +65,6 @@ public class JiraClient
 	        System.out.println( "Hello World!" );
 	        
 	        System.out.println("totalStories1: "+totalStories);
-	        /*
-	        JiraClient jc = new JiraClient();
-	        
-	        JiraRestClient jiraRestClient =  jc.getJiraRestClient();
-	        
-	        final SearchRestClient searchRestClient = jiraRestClient.getSearchClient();
-	        
-	        SearchResult searchResult = searchRestClient.searchJql("project = SSP AND issuetype = Story").get();
-	        
-	        //final SearchResult searchResult = searchRestClient.searchJql(filter.getJql()).claim();
-	        
-	        totalStories = searchResult.getTotal();
-	        
-	        System.out.println("totalStories2: "+totalStories);
-	        
-	        Iterable<Issue> issueList = searchResult.getIssues();
-	        
-	        System.out.println(issueList.toString());*/
     		
     		URI jiraServerUri = URI.create(JIRA_URL);
     		
@@ -95,10 +81,6 @@ public class JiraClient
     		Iterable<Issue> issueList = searchResult.getIssues();
     		
     		System.out.println("totalStories2: "+searchResult.getTotal());
-    		
-    		//System.out.println(issueList.toString());
-    		
-    		
     		
     		for(Issue issue:issueList) {
     			
