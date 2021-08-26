@@ -2,6 +2,18 @@
 ## Aim of this JiraRestAPIClient
 
   To generate *jira-datasource.csv* file which will contains the data pulled from the JIRA proejcts with the details - sprint, total stories, total story points and stroy points delivered. See the sample output data in the file [jira-datasource.csv](https://github.com/venkatasykam/JiraRestAPIClient/blob/master/jira-datasource.csv)
+  
+  * Data will be prepared based on the below scenario.
+
+
+        Sprint = Sprint Name
+
+        Total Stories = Total stories created under the "Sprint" (Issue Type = Story)
+
+        Story Points Committed = Total story points added to all the stories (closed and opened)
+
+        Story points Delivered = Total story points added to all the closed stories (Issue Status = Done)
+
 
 ### Tools used for development, build and execute
 
