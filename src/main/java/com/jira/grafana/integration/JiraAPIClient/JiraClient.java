@@ -58,7 +58,7 @@ public class JiraClient
     		ArrayList<String> sprintDetailsList = new ArrayList<String>();
     		Set<String> sprintNames = new LinkedHashSet<String>();  
     		
-    		File file = new File("jira-datasource.csv");
+    		File file = new File("target\jira-datasource.csv");
     		// create FileWriter object with file as parameter
             FileWriter outputfile = new FileWriter(file);
             // create CSVWriter object filewriter object as parameter
