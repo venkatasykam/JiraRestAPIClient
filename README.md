@@ -1,9 +1,9 @@
 
-## AIM of this JiraRestAPIClient
+## Aim of this JiraRestAPIClient
 
   To generate *jira-datasource.csv* file which will contains the data pulled from the JIRA proejcts with the details - sprint, total stories, total story points and stroy points delivered. See the sample output data in the file [jira-datasource.csv](https://github.com/venkatasykam/JiraRestAPIClient/blob/master/jira-datasource.csv)
 
-### Tools used for development and build
+### Tools used for development, build and execute
 
 > Java version: jdk1.8.0_301
 
