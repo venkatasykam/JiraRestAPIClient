@@ -43,7 +43,15 @@ Step-2: **Create datasource using CSV plugin**:
   
 ![image](https://user-images.githubusercontent.com/24622526/130913707-123191cb-4d53-4dc6-b28e-7d9ed9b13c11.png)
 
+  2.3. Enter the name and URL
+  
+  > URL can be raw view git URL, similar to: https://raw.githubusercontent.com/venkatasykam/JiraRestAPIClient/master/jira-datasource.csv
+  
+![image](https://user-images.githubusercontent.com/24622526/130913957-76919897-fea8-4e52-998e-462fdae9a08d.png)
 
+  2.4. Click on **Save and Test** (if your repo is private repo, 
+  
+![image](https://user-images.githubusercontent.com/24622526/130914323-8814324f-eb07-41db-a00f-1f5a82f8db65.png)
 
 
 Final Dashboard view:
