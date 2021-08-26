@@ -45,9 +45,10 @@ public class JiraClient
     {
     	try {
     		
-    	    String JIRA_URL = args[0].toString();
-    	    String JIRA_ADMIN_USERNAME = args[1].toString();
-    	    String JIRA_ADMIN_PASSWORD = args[2].toString();
+    		String JIRA_PROJECT_KEY = args[0].toString();
+    	    String JIRA_URL = args[1].toString();
+    	    String JIRA_ADMIN_USERNAME = args[2].toString();
+    	    String JIRA_ADMIN_ACCESS_TOKEN = args[3].toString();
     		
     		String[] names = null;
     		String sName = "NONE";
@@ -66,26 +67,26 @@ public class JiraClient
             // adding header to csv
             String[] header = { "Sprint", "Total Stories", "Story Points Committed", "Story points Delivered"};
             writer.writeNext(header);
-    	
-	        System.out.println( "Hello World!" );
 	        
-	        System.out.println("totalStories1: "+totalStories);
+	        //System.out.println("totalStories1: "+totalStories);
     		
     		URI jiraServerUri = URI.create(JIRA_URL);
     		
     		AsynchronousJiraRestClientFactory factory = new AsynchronousJiraRestClientFactory();
     		
-    		AuthenticationHandler auth = new BasicHttpAuthenticationHandler(JIRA_ADMIN_USERNAME, JIRA_ADMIN_PASSWORD);
+    		AuthenticationHandler auth = new BasicHttpAuthenticationHandler(JIRA_ADMIN_USERNAME, JIRA_ADMIN_ACCESS_TOKEN);
     		
     		JiraRestClient restClient = factory.create(jiraServerUri, auth);
     		
     		SearchRestClient src = restClient.getSearchClient();
     		
-    		SearchResult searchResult = src.searchJql("project = SSP AND issuetype = Story").get();
+    		String JQL = "project = "+JIRA_PROJECT_KEY+" AND issuetype = Story";
+
+    		SearchResult searchResult = src.searchJql(JQL).get();
     		
     		Iterable<Issue> issueList = searchResult.getIssues();
     		
-    		System.out.println("totalStories2: "+searchResult.getTotal());
+    		//System.out.println("[Debug] totalStories2: "+searchResult.getTotal());
     		
     		for(Issue issue:issueList) {
     			
@@ -125,7 +126,7 @@ public class JiraClient
     				sprintName = "NONE";
     			}
     			
-    			System.out.println("Issue Type: "+issueType+" - issueKey"+issueKey+" - issue status: "+issueStatus+" - Story Field Name: "+storyFieldName+" - Story Points: "+storyPoints+" - Sprint Field Name: "+sprintFieldName+" - Sprint Field Value: "+sprintName);
+    			//System.out.println("[INFO] Issue Type: "+issueType+" - issueKey"+issueKey+" - issue status: "+issueStatus+" - Story Field Name: "+storyFieldName+" - Story Points: "+storyPoints+" - Sprint Field Name: "+sprintFieldName+" - Sprint Field Value: "+sprintName);
     		}
     		/*
     		for(String sprintDetails: sprintDetailsList){
@@ -140,9 +141,9 @@ public class JiraClient
     		}*/
     		
 
-    		System.out.println("========sprintDetailsList=============");
+    		//System.out.println("========sprintDetailsList=============");
     		
-    		System.out.println(sprintDetailsList);
+    		//System.out.println(sprintDetailsList);
     		
     		ArrayList<String> finalSprintDetails = new ArrayList<String>();
     		
@@ -150,7 +151,7 @@ public class JiraClient
     			finalSprintDetails.add(getFinalSprintDetails(sprintNam,sprintDetailsList));
     		}
     		
-    		System.out.println("========finalSprintDetails=============");
+    		System.out.println("========Final Sprint Details=============");
     		
     		Collections.sort(finalSprintDetails);   
     		
@@ -187,7 +188,7 @@ public class JiraClient
     			
     			sprintName=sprintArray[0];
     			
-    			System.out.println("[DEBUG]: "+Integer.parseInt(sprintArray[2].replace(".0", "")));
+    			//System.out.println("[DEBUG]: "+Integer.parseInt(sprintArray[2].replace(".0", "")));
     			
     			totalStoryPointsCommitted = totalStoryPointsCommitted + Integer.parseInt(sprintArray[2].replace(".0", ""));
 
