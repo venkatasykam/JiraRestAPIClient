@@ -49,9 +49,13 @@ Step-2: **Create datasource using CSV plugin**:
   
 ![image](https://user-images.githubusercontent.com/24622526/130913957-76919897-fea8-4e52-998e-462fdae9a08d.png)
 
-  2.4. Click on **Save and Test**
-  
+  2.4. Click on **Save and Test** (if your git repo is *Private* repo, then you need to choose the suitable authentication method for you.
+   
 ![image](https://user-images.githubusercontent.com/24622526/130914323-8814324f-eb07-41db-a00f-1f5a82f8db65.png)
+
+configure credentials for private git repos: (Basic Auth, enter git user name, password should be personal access token)
+
+![image](https://user-images.githubusercontent.com/24622526/130917121-73e93d5c-b9ba-48d6-9ca5-ca748fc2934d.png)
 
 
 Step-3: **Create Data board**
