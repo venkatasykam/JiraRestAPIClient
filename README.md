@@ -41,7 +41,7 @@ Step-3: **java command to execute**: `java -jar target/JiraAPIClient-1.0.0-SNAPS
 
 Step-4: Commit and push the file *jira-datasource.csv* to this same git repo.
 
-> Note: Configure the above steps in any CI tool (ex: Jenkins) to automatilly execute these steps hourly or everyday once, so that the file *jira-datasource.csv* contains the latest data.
+> Note: Configure the above steps in any CI tool (ex: Jenkins) to automatilly execute these steps hourly or everyday once, so that the file *jira-datasource.csv* contains the latest data. OR use Jenkins plugin [jira-trigger-plugin](https://github.com/jenkinsci/jira-trigger-plugin), when story points field changed automatically jenkins job will be triggered (this plugin not tried yet in this practice)  
 
 ### Prepare dashboard in Grafana Cloud
 
