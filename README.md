@@ -49,11 +49,31 @@ Step-2: **Create datasource using CSV plugin**:
   
 ![image](https://user-images.githubusercontent.com/24622526/130913957-76919897-fea8-4e52-998e-462fdae9a08d.png)
 
-  2.4. Click on **Save and Test** (if your repo is private repo, 
+  2.4. Click on **Save and Test**
   
 ![image](https://user-images.githubusercontent.com/24622526/130914323-8814324f-eb07-41db-a00f-1f5a82f8db65.png)
 
 
+Step-3: **Create Data board**
+
+  3.1. Click on plus(+) symbol >> Create 
+  
+![image](https://user-images.githubusercontent.com/24622526/130915626-910fee9e-1a8f-4f31-be26-49b5fc4c5bcf.png)
+
+  3.2. Click on "Add an empty panel"
+  
+![image](https://user-images.githubusercontent.com/24622526/130915866-59710977-360c-45ce-a74b-f27f2ae28096.png)
+
+  3.3. Change the panel view type from "Time series" to "Bar Chart"
+
+![image](https://user-images.githubusercontent.com/24622526/130916090-c3e2c473-f226-498c-a62e-1e0c8672556b.png)
+
+  3.4. Choose the data source which we created *CSV-jira-datasource-jirarestclient* and add the fields.
+  
+![image](https://user-images.githubusercontent.com/24622526/130916685-ac758bb8-bd92-4bdd-a24d-b507fe15780c.png)
+
+  3.5. Save the dashboard with appropriate name.
+  
 Final Dashboard view:
 
 ![image](https://user-images.githubusercontent.com/24622526/130913232-3396cab5-5e81-4d8c-a966-5fe324c1985e.png)
