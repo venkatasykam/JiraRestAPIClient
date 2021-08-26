@@ -97,7 +97,8 @@ Final Dashboard view:
 
   3.8. Choose the data source which we created *CSV-jira-datasource-jirarestclient* and save the panel and dashboard.
   
-![image](https://user-images.githubusercontent.com/24622526/130928010-962e76da-2b01-49bf-93bf-38cc01160a14.png)
+![image](https://user-images.githubusercontent.com/24622526/130928278-41deb655-752e-45bd-a2ed-712759632770.png)
+
 
 
   
