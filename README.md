@@ -23,7 +23,7 @@ Step-1: Clone this repo to your workspace (IDE or git bash or any git client)
 
 Step-2: **maven command to build**: `mvn clean install`
 
-Step-3: **java command to execute**: `java -jar target/JiraAPIClient-1.0.0-SNAPSHOT.jar ${JIRA_PROJECT_KEY} ${JIRA_URL} ${JIRA_ADMIN_USERNAME} ${JIRA_ADMIN_PASSWORD}`
+Step-3: **java command to execute**: `java -jar target/JiraAPIClient-1.0.0-SNAPSHOT.jar ${JIRA_PROJECT_KEY} ${JIRA_URL} ${JIRA_ADMIN_USERNAME} ${JIRA_ADMIN_ACCESS_TOKEN}`
 
       `example: java -jar target/JiraAPIClient-1.0.0-SNAPSHOT.jar SSP https://username.atlassian.net/ admin admin-user-personal-access-token`
 
