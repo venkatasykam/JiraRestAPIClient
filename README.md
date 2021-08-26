@@ -85,6 +85,24 @@ Final Dashboard view:
 ![image](https://user-images.githubusercontent.com/24622526/130913232-3396cab5-5e81-4d8c-a966-5fe324c1985e.png)
 
 
+  3.6. In 3.3, panel view has been selected as "Bar Chart", we can create panel with tabular format also. Click on plus symbol to add new below (to right side)
+  
+
+![image](https://user-images.githubusercontent.com/24622526/130927619-76183072-fab0-4585-a504-8f2da5e5a221.png)
+
+  3.7. Select table
+  
+
+![image](https://user-images.githubusercontent.com/24622526/130927777-1367a5ea-ad5c-4b64-b444-25d719af0aae.png)
+
+  3.8. Choose the data source which we created *CSV-jira-datasource-jirarestclient* and save the panel and dashboard.
+  
+![image](https://user-images.githubusercontent.com/24622526/130928010-962e76da-2b01-49bf-93bf-38cc01160a14.png)
+
+
+  
+  
+
 
 
 
