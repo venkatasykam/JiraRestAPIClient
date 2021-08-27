@@ -37,7 +37,7 @@ Step-2: **maven command to build**: `mvn clean install`
 
 Step-3: **java command to execute**: `java -jar target/JiraRestAPIClient-1.0.0-SNAPSHOT.jar ${JIRA_PROJECT_KEY} ${JIRA_URL} ${JIRA_ADMIN_USERNAME} ${JIRA_ADMIN_ACCESS_TOKEN}`
 
-      `example: java -jar target/JiraRestAPIClient-1.0.0-SNAPSHOT.jar SSP https://username.atlassian.net/ admin admin-user-personal-access-token`
+      `example: java -jar target/JiraRestAPIClient-1.0.0-SNAPSHOT.jar SSP https://JIRA_SERVER_URL/ admin admin-user-personal-access-token`
 
 Step-4: Commit and push the file *jira-datasource.csv* to this same git repo.
 
