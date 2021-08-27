@@ -1,5 +1,5 @@
 
-Step-1: Download the Jar file `JiraAPIClient-1.0.0.jar` form this location.
+Step-1: Download the Jar file `JiraAPIClient-1.0.0.jar` form this location [JiraAPIClient-1.0.0.jar](JiraAPIClient-1.0.0.jar).
 
 Step-2: **java command to execute**: `java -jar target/JiraAPIClient-1.0.0-SNAPSHOT.jar ${JIRA_PROJECT_KEY} ${JIRA_URL} ${JIRA_ADMIN_USERNAME} ${JIRA_ADMIN_ACCESS_TOKEN}`
 
