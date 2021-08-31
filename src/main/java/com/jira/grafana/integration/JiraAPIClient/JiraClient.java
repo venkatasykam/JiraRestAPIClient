@@ -50,7 +50,7 @@ public class JiraClient
     	    String JIRA_ADMIN_USERNAME = args[2].toString();
     	    String JIRA_ADMIN_ACCESS_TOKEN = args[3].toString();
     		
-    		String[] names = null;
+    		String[] names = {""};
     		String sName = "NONE";
     		String sprintName = "none";
     		int totalStories = 0;
@@ -86,7 +86,7 @@ public class JiraClient
     		
     		Iterable<Issue> issueList = searchResult.getIssues();
     		
-    		//System.out.println("[Debug] totalStories2: "+searchResult.getTotal());
+    		System.out.println("[Debug] totalStories2: "+searchResult.getTotal());
     		
     		for(Issue issue:issueList) {
     			
@@ -102,19 +102,28 @@ public class JiraClient
     			if(issueFieldStory.getValue()!=null) {
     				storyPoints = (double)issueFieldStory.getValue();
     			}
-    			String sprintFieldName = issueFieldSprint.getName();
-	    		
+    			
+    			//System.out.println("[DEBUG]:====="+issueFieldSprint.toString());
+    			//String sprintFieldName = issueFieldSprint.getValue().toString();//.getName();
+    			//System.out.println("[DEBUG]:====="+sprintFieldName.toString());
+    			
+    			//String sprint = 
+    			
     			if(issueFieldSprint.getValue() != null) {
-	    			String sprintDetailsJSONObject = issueFieldSprint.getValue().toString();
+    				String sprintFieldName = issueFieldSprint.getValue().toString();
+	    			String sprintDetailsJSONObject = sprintFieldName.toString();
 	    			String[] sprintDetails = sprintDetailsJSONObject.split(",");
 	    			
-	    			for(String sprint:sprintDetails) {
-	    				if(sprint.contains("name")) {
-	    					names = sprint.split(":");
+	    			for(String sprintu:sprintDetails) {
+	    				if(sprintu.contains("name")) {
+	    					//System.out.println("[DEBUG-sprintu]:====="+sprintu);
+	    					names = sprintu.split("=");
+	    				
 	    					sName = names[1].replaceAll("\"", "");
+	    					
 	    				}
 	    			}
-	
+
 	    			sprintName = sName;
 	    			
 	    			sprintNames.add(sprintName);
