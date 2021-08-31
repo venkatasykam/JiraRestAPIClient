@@ -117,7 +117,7 @@ public class JiraClient
 	    			for(String sprintu:sprintDetails) {
 	    				if(sprintu.contains("name")) {
 	    					//System.out.println("[DEBUG-sprintu]:====="+sprintu);
-	    					names = sprintu.split("=");
+	    					names = sprintu.split("="); //In JIRA cloud, this value comes with colon :
 	    				
 	    					sName = names[1].replaceAll("\"", "");
 	    					
