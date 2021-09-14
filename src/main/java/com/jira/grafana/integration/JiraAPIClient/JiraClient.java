@@ -182,7 +182,7 @@ public class JiraClient
     	
     	String finalSprintDetails= "";
     	String sprintName = "";
-    	String podName = "";
+    	String podName = "NONE";
     	int totalStoryPointsCommitted = 0;
     	int totalStoryPointsDelivered = 0;
     	int totalStories = 0;
@@ -210,11 +210,12 @@ public class JiraClient
     		}
     	}
     	
-    	String[] podSprint = sprintName.split("_");
-    	
-    	podName = podSprint[0];
-    	sprintName = podSprint[1];
-    	
+    	if(sprintName.contains("_")) {
+	    	String[] podSprint = sprintName.split("_");
+	    	
+	    	podName = podSprint[0];
+	    	sprintName = podSprint[1];
+   		}
     	finalSprintDetails = podName+":"+sprintName+":"+totalStories+":"+totalStoryPointsCommitted+":"+totalStoryPointsDelivered;
     	
     	return finalSprintDetails;
