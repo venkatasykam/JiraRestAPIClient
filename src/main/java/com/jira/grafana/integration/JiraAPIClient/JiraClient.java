@@ -65,7 +65,7 @@ public class JiraClient
             // create CSVWriter object filewriter object as parameter
             CSVWriter writer = new CSVWriter(outputfile);
             // adding header to csv
-            String[] header = { "Sprint", "Total Stories", "Story Points Committed", "Story points Delivered"};
+            String[] header = {"POD", "Sprint", "Total Stories", "Story Points Committed", "Story points Delivered"};
             writer.writeNext(header);
 	        
 	        //System.out.println("totalStories1: "+totalStories);
@@ -182,6 +182,7 @@ public class JiraClient
     	
     	String finalSprintDetails= "";
     	String sprintName = "";
+    	String podName = "";
     	int totalStoryPointsCommitted = 0;
     	int totalStoryPointsDelivered = 0;
     	int totalStories = 0;
@@ -209,7 +210,12 @@ public class JiraClient
     		}
     	}
     	
-    	finalSprintDetails = sprintName+":"+totalStories+":"+totalStoryPointsCommitted+":"+totalStoryPointsDelivered;
+    	String[] podSprint = sprintName.split("_");
+    	
+    	podName = podSprint[0];
+    	sprintName = podSprint[1];
+    	
+    	finalSprintDetails = podName+":"+sprintName+":"+totalStories+":"+totalStoryPointsCommitted+":"+totalStoryPointsDelivered;
     	
     	return finalSprintDetails;
     	
