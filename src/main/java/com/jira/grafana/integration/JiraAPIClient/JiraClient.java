@@ -80,7 +80,7 @@ public class JiraClient
     		
     		SearchRestClient src = restClient.getSearchClient();
     		
-    		String JQL = "project = "+JIRA_PROJECT_KEY+" AND issuetype = Story";
+    		String JQL = "project = "+JIRA_PROJECT_KEY+" AND issuetype = Story AND  resolution = Done";
 
     		SearchResult searchResult = src.searchJql(JQL).get();
     		
@@ -124,7 +124,7 @@ public class JiraClient
 	    				}
 	    			}
 
-	    			sprintName = sName;
+	    			sprintName = sName.trim();
 	    			
 	    			sprintNames.add(sprintName);
 	    			
