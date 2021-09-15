@@ -46,9 +46,10 @@ public class JiraClient
     	try {
     		
     		String JIRA_PROJECT_KEY = args[0].toString();
-    	    String JIRA_URL = args[1].toString();
-    	    String JIRA_ADMIN_USERNAME = args[2].toString();
-    	    String JIRA_ADMIN_ACCESS_TOKEN = args[3].toString();
+    		String SPRINT_VALUE = args[1].toString();
+    	    String JIRA_URL = args[2].toString();
+    	    String JIRA_ADMIN_USERNAME = args[3].toString();
+    	    String JIRA_ADMIN_ACCESS_TOKEN = args[4].toString();
     		
     		String[] names = {""};
     		String sName = "NONE";
@@ -80,7 +81,7 @@ public class JiraClient
     		
     		SearchRestClient src = restClient.getSearchClient();
     		
-    		String JQL = "project = "+JIRA_PROJECT_KEY+" AND issuetype = Story AND  resolution = Done";
+    		String JQL = "project = "+JIRA_PROJECT_KEY+" AND issuetype = Story AND  Sprint = "+SPRINT_VALUE;
 
     		SearchResult searchResult = src.searchJql(JQL).get();
     		
