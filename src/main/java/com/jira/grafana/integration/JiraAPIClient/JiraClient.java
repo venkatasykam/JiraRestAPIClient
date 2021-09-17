@@ -153,13 +153,14 @@ public class JiraClient
     		int sprintsCount = 0;
             for (Sprint sprint : sprints) {
             	sprintsCount = sprintsCount + 1;
-                System.out.println("Sprint Names: "+sprint);
-                SprintReport sr = board.getSprintReport(sprint);
+                
+                //SprintReport sr = board.getSprintReport(sprint);
                 //System.out.println("		Sprint getAllIssuesEstimateSum(): "+sr.getAllIssuesEstimateSum().getValue());
                 //System.out.println("		Sprint getCompletedIssuesEstimateSum(): "+sr.getCompletedIssuesEstimateSum().getValue());
                 //System.out.println("		Sprint getPuntedIssuesEstimateSum(): "+sr.getPuntedIssuesEstimateSum().getValue());
                 if(!sprint.getName().isEmpty() && sprint !=null && sprintsCount <=20 ) {
-	            	String JQL = "project = "+JIRA_PROJECT_KEY+" AND issuetype = Story AND Sprint = '"+sprint.getName().toString()+"'";
+                	System.out.println("Sprint Name-"+sprintsCount+": "+sprint);
+                	String JQL = "project = "+JIRA_PROJECT_KEY+" AND issuetype = Story AND Sprint = '"+sprint.getName().toString()+"'";
 	            	System.out.println("JQL: "+JQL);
 	                SearchResult searchResult = src.searchJql(JQL).get();
 	                Iterable<Issue> issueList = searchResult.getIssues();
