@@ -6,7 +6,7 @@
 
   <groupId>com.jira.grafana.integration</groupId>
   <artifactId>JiraRestAPIClient</artifactId>
-  <version>1.0.4</version>
+  <version>1.0.5</version>
 
   <name>JiraRestAPIClient</name>
   <!-- FIXME change it to the project's website -->
@@ -18,11 +18,28 @@
   </properties>
 
   <dependencies>
+      <dependency>
+      <groupId>org.apache.httpcomponents</groupId>
+      <artifactId>httpclient</artifactId>
+      <version>4.5.2</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.httpcomponents</groupId>
+      <artifactId>httpmime</artifactId>
+      <version>4.5.2</version>
+    </dependency>
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>4.11</version>
       <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>net.rcarz</groupId>
+      <artifactId>jira-client</artifactId>
+      <version>0.5</version>
+      <scope>compile</scope>
     </dependency>
     <dependency>
 	    <groupId>com.atlassian.jira</groupId>

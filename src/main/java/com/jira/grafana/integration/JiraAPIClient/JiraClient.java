@@ -3,6 +3,7 @@ package com.jira.grafana.integration.JiraAPIClient;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Set;
 
 import com.atlassian.jira.rest.client.api.AuditRestClient;
@@ -30,6 +31,7 @@ import com.atlassian.jira.rest.client.internal.async.AsynchronousJiraRestClientF
 import com.opencsv.CSVWriter;
 
 import io.atlassian.util.concurrent.Promise;
+import net.rcarz.jiraclient.BasicCredentials;
 
 import org.joda.time.DateTime;
 
@@ -37,7 +39,11 @@ import java.io.File;
 import java.io.FileWriter;
 import java.net.URI;
 
-
+import net.rcarz.jiraclient.greenhopper.GreenHopperClient;
+import net.rcarz.jiraclient.greenhopper.RapidView;
+import net.rcarz.jiraclient.greenhopper.Sprint;
+import net.rcarz.jiraclient.greenhopper.SprintIssue;
+import net.rcarz.jiraclient.greenhopper.SprintReport;
 /**
  * Hello world!
  *
@@ -61,12 +67,13 @@ public class JiraClient
     	    String JIRA_URL = args[1].toString();
     	    String JIRA_ADMIN_USERNAME = args[2].toString();
     	    String JIRA_ADMIN_ACCESS_TOKEN = args[3].toString();
+    	    //String JIRA_ADMIN_PASSWORD = args[4].toString();
 
     		int totalStories = 0;
     		int storyPointsCommitted = 0;
     		int storyPointsDelivered = 0;
     		ArrayList<String> sprintDetailsList = new ArrayList<String>();
-    		
+    		int rapidViewId = 0;
     		
     		File file = new File("jira-datasource.csv");
     		// create FileWriter object with file as parameter
@@ -97,14 +104,61 @@ public class JiraClient
     		//ProjectRestClient prc = restClient.getProjectClient();
     		//Promise<Project> project = prc.getProject(JIRA_PROJECT_KEY);
     		//Project pr = project.get();
+    		//pr.
     		
+    		BasicCredentials creds = new BasicCredentials(JIRA_ADMIN_USERNAME, JIRA_ADMIN_ACCESS_TOKEN);
+    		net.rcarz.jiraclient.JiraClient jira = new net.rcarz.jiraclient.JiraClient(JIRA_URL, creds);
+    		GreenHopperClient gh = new GreenHopperClient(jira);
     		
+    		List<RapidView> allRapidBoards = gh.getRapidViews();
+    		List<Sprint> listOfSprints = new ArrayList<Sprint>();
+    		List<SprintIssue> sprintIssuesList = new ArrayList<SprintIssue>();
+    		//List<SprintIssue> sprintCompletedIssuesList = new ArrayList<SprintIssue>();
+    		//List<SprintIssue> sprintInompletedIssuesList = new ArrayList<SprintIssue>();
+    		
+    		//System.out.println("sprintIssue.getKey(): ");
+    		
+    		for(RapidView rapidView:allRapidBoards) {
+    			listOfSprints = rapidView.getSprints();
+    			
+    			//System.out.println("rapidView.getId(): "+rapidView.getId());
+    			//System.out.println("rapidView.toString(): "+rapidView.toString());
+    			//System.out.println("listOfSprints: "+listOfSprints.toString());
+    			
+    			for(Sprint sprint:listOfSprints) {
+    				sprintIssuesList = sprint.getIssues();
+    				SprintReport sr = rapidView.getSprintReport(sprint);
+    				sprintIssuesList.addAll(sr.getCompletedIssues());
+    				sprintIssuesList.addAll(sr.getIncompletedIssues());
+    				//System.out.println("sprintIssuesList: "+sprintIssuesList.toString());
+    				//System.out.println("sprint.toString(): "+sprint.toString());
+    				for(SprintIssue sprintIssue:sprintIssuesList) {
+    					//System.out.println("sprintIssue.getKey(): "+sprintIssue.getKey());
+    					if(sprintIssue.getKey().split("-")[0].equals(JIRA_PROJECT_KEY)){
+    						rapidViewId = rapidView.getId();
+    						break ;
+    					}
+    				}
+    			}
+    		}
+    		
+    		RapidView board = gh.getRapidView(rapidViewId);
+    		List<Sprint> sprints = board.getSprints();
+            for (Sprint sprint : sprints) {
+                System.out.println("Sprint Names: "+sprint);
+                if(!sprint.getName().isEmpty() && sprint !=null ) {
+	            	String JQL = "project = "+JIRA_PROJECT_KEY+" AND issuetype = Story AND Sprint = '"+sprint.getName().toString()+"'";
+	            	System.out.println("JQL: "+JQL);
+	                SearchResult searchResult = src.searchJql(JQL).get();
+	                Iterable<Issue> issueList = searchResult.getIssues();
+	                sprintDetailsList.addAll(getSprintDetails(issueList));
+                }else {
+                	System.out.println("Empty sprint");
+                }
+            }
     		//String JQL = "project = "+JIRA_PROJECT_KEY+" AND issuetype = Story AND  Sprint = "+SPRINT_VALUE;
     		
-    		String JQL1 = "project = "+JIRA_PROJECT_KEY+" AND issuetype = Story  and sprint in closedSprints()";
-    		String JQL2 = "project = "+JIRA_PROJECT_KEY+" AND issuetype = Story  and sprint in openSprints()";
-    		String JQL3 = "project = "+JIRA_PROJECT_KEY+" AND issuetype = Story  and sprint in futureSprints()";
-
+            /*
     		SearchResult searchResult1 = src.searchJql(JQL1).get();
     		SearchResult searchResult2 = src.searchJql(JQL2).get();
     		SearchResult searchResult3 = src.searchJql(JQL3).get();
@@ -124,7 +178,7 @@ public class JiraClient
     		sprintDetailsList.addAll(getSprintDetails(issueList1));
     		sprintDetailsList.addAll(getSprintDetails(issueList2));
     		sprintDetailsList.addAll(getSprintDetails(issueList3));
-
+			*/
     		//System.out.println("========sprintDetailsList=============");
     		
     		//System.out.println(sprintDetailsList);
