@@ -64,16 +64,18 @@ public class JiraClient
     		
     		String JIRA_PROJECT_KEY = args[0].toString();
     		//String SPRINT_VALUE = args[1].toString();
-    	    String JIRA_URL = args[1].toString();
-    	    String JIRA_ADMIN_USERNAME = args[2].toString();
-    	    String JIRA_ADMIN_ACCESS_TOKEN = args[3].toString();
+    		String RAPID_VIEW_ID = args[1].toString();
+    	    String JIRA_URL = args[2].toString();
+    	    String JIRA_ADMIN_USERNAME = args[3].toString();
+    	    String JIRA_ADMIN_ACCESS_TOKEN = args[4].toString();
     	    //String JIRA_ADMIN_PASSWORD = args[4].toString();
+    	    
 
     		int totalStories = 0;
     		int storyPointsCommitted = 0;
     		int storyPointsDelivered = 0;
     		ArrayList<String> sprintDetailsList = new ArrayList<String>();
-    		int rapidViewId = 0;
+    		int rapidViewId = Integer.parseInt(RAPID_VIEW_ID);
     		
     		File file = new File("jira-datasource.csv");
     		// create FileWriter object with file as parameter
@@ -117,7 +119,7 @@ public class JiraClient
     		//List<SprintIssue> sprintInompletedIssuesList = new ArrayList<SprintIssue>();
     		
     		//System.out.println("sprintIssue.getKey(): ");
-    		
+    		/*
     		for(RapidView rapidView:allRapidBoards) {
     			listOfSprints = rapidView.getSprints();
     			
@@ -141,7 +143,7 @@ public class JiraClient
     				}
     			}
     		}
-    		
+    		*/
     		RapidView board = gh.getRapidView(rapidViewId);
     		List<Sprint> sprints = board.getSprints();
             for (Sprint sprint : sprints) {
