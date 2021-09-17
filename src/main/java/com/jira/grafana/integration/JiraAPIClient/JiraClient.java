@@ -158,7 +158,7 @@ public class JiraClient
                 //System.out.println("		Sprint getAllIssuesEstimateSum(): "+sr.getAllIssuesEstimateSum().getValue());
                 //System.out.println("		Sprint getCompletedIssuesEstimateSum(): "+sr.getCompletedIssuesEstimateSum().getValue());
                 //System.out.println("		Sprint getPuntedIssuesEstimateSum(): "+sr.getPuntedIssuesEstimateSum().getValue());
-                if(!sprint.getName().isEmpty() && sprint !=null && sprintsCount <=30 ) {
+                if(!sprint.getName().isEmpty() && sprint !=null && sprintsCount <=40 ) {
                 	System.out.println("Sprint Name-"+sprintsCount+": "+sprint);
                 	String JQL = "project = "+JIRA_PROJECT_KEY+" AND issuetype = Story AND Sprint = '"+sprint.getName().toString()+"'";
 	            	System.out.println("JQL: "+JQL);
