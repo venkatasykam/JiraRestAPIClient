@@ -151,14 +151,14 @@ public class JiraClient
             for (Sprint sprint : sprints) {
             	sprintsCount = sprintsCount + 1;
                 System.out.println("Sprint Names: "+sprint);
-                if(!sprint.getName().isEmpty() && sprint !=null && sprintsCount <=10 ) {
+                if(!sprint.getName().isEmpty() && sprint !=null && sprintsCount <=50 ) {
 	            	String JQL = "project = "+JIRA_PROJECT_KEY+" AND issuetype = Story AND Sprint = '"+sprint.getName().toString()+"'";
 	            	System.out.println("JQL: "+JQL);
 	                SearchResult searchResult = src.searchJql(JQL).get();
 	                Iterable<Issue> issueList = searchResult.getIssues();
 	                sprintDetailsList.addAll(getSprintDetails(issueList));
                 }else {
-                	System.out.println("Empty sprint");
+                	//System.out.println("Empty sprint");
                 }
             }
     		//String JQL = "project = "+JIRA_PROJECT_KEY+" AND issuetype = Story AND  Sprint = "+SPRINT_VALUE;
