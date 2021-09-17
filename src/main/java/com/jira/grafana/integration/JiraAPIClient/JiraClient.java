@@ -146,6 +146,7 @@ public class JiraClient
     		*/
     		RapidView board = gh.getRapidView(rapidViewId);
     		List<Sprint> sprints = board.getSprints();
+    		System.out.println("Total Sprints: "+sprints.size());
             for (Sprint sprint : sprints) {
                 System.out.println("Sprint Names: "+sprint);
                 if(!sprint.getName().isEmpty() && sprint !=null ) {
@@ -187,8 +188,12 @@ public class JiraClient
     		
     		ArrayList<String> finalSprintDetails = new ArrayList<String>();
     		
+    		String sprintDetails = "";
+    		
     		for(String sprintNam: sprintNames) {
-    			finalSprintDetails.add(getFinalSprintDetails(sprintNam,sprintDetailsList));
+    			sprintDetails = getFinalSprintDetails(sprintNam,sprintDetailsList);
+    			finalSprintDetails.add(sprintDetails);
+    			writer.writeNext(sprintDetails.split(":"));
     		}
     		
     		System.out.println("========Final Sprint Details=============");
@@ -196,11 +201,11 @@ public class JiraClient
     		Collections.sort(finalSprintDetails);   
     		
     		System.out.println(finalSprintDetails);
-    		
+    		/*
     		for(String sprintDetails: finalSprintDetails) {
     			writer.writeNext(sprintDetails.split(":"));
     		}
-    		
+    		*/
     		writer.close();
     		
     	}catch(Exception ex) {
